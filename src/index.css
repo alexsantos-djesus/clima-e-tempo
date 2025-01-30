@@ -1,7 +1,12 @@
+/* index.css */
+
+/* Suavizar transições no corpo e elementos principais */
 body {
   font-family: Arial, sans-serif;
   text-align: center;
   background-color: #f4f4f4;
+  overflow-x: hidden; /* Evita rolagem horizontal */
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 .container {
@@ -10,7 +15,50 @@ body {
   padding: 20px;
   background: white;
   border-radius: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.placeholder {
+  text-align: center;
+  font-size: 1.2em;
+  color: gray;
+  margin-top: 20px;
+}
+
+/* Responsividade para telas pequenas */
+@media (max-width: 600px) {
+  .container {
+    padding: 15px;
+    margin: 20px;
+    max-width: 100%;
+  }
+
+  input {
+    width: 100%;
+  }
+
+  .tide-container,
+  .weather-card {
+    margin-top: 15px;
+  }
+
+  .forecast-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+
+  .forecast-day {
+    background: rgba(255, 255, 255, 0.2); /* Fundo semitransparente */
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    min-width: 90px;
+    flex: 1 1 100px;
+    color: white; /* Melhor contraste no modo escuro */
+  }
 }
 
 input {
@@ -19,15 +67,103 @@ input {
   margin: 10px 0;
   border: 1px solid #ccc;
   border-radius: 5px;
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
+.tide-container {
+  margin-top: 20px;
+  padding: 15px;
+  background: #f0f8ff;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.tide-container h3 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.tide-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.tide-container li {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.tide-container li:last-child {
+  border-bottom: none;
+}
+
+input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Modo escuro */
+.dark {
+  background-color: #1e1e1e;
+  color: white;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark .forecast-container {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.dark .forecast-day {
+  background-color: #292929;
+  color: #ffffff;
+  padding: 8px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+.toggle-theme {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #333;
+  color: white;
+  margin-bottom: 10px;
+  transition: background 0.3s ease-in-out;
+}
+
+.toggle-theme:hover {
+  background: #ffffff;
+  color: #333;
+}
+
+/* Cartões de clima com animação de fade */
 .weather-card {
   padding: 20px;
   margin-top: 20px;
   border-radius: 10px;
   color: white;
+  transition: all 0.5s ease-in-out;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
+/* Animação de fade-in para os cards */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Cores de fundo dos cards de clima */
 .weather-card.clear {
   background: #ffcc00;
 }
@@ -44,7 +180,82 @@ input {
   background: #00c8ff;
 }
 
+/* Mensagens de erro */
 .error {
   color: red;
   font-weight: bold;
+  font-size: 1.1em;
+  margin-top: 20px;
+}
+
+/* Previsões */
+.forecast-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Para garantir o espaçamento uniforme */
+  transition: all 0.3s ease;
+}
+
+.forecast-day {
+  background: #f0f0f0;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  min-width: 70px;
+  flex: 1 1 100px; /* Para que cada previsão ocupe no mínimo 100px de largura */
+  margin-bottom: 10px; /* Para dar espaçamento entre as linhas de previsões */
+  transition: background 0.3s ease-in-out;
+}
+
+/* Responsividade para telas menores que 600px (ex. celulares) */
+@media (max-width: 600px) {
+  .forecast-container {
+    justify-content: center; /* Centraliza as previsões */
+  }
+
+  .forecast-day {
+    min-width: 90px; /* Aumenta o tamanho mínimo das previsões */
+    padding: 8px; /* Diminui o padding para ajustar melhor */
+    font-size: 0.9em; /* Ajuste do tamanho da fonte para telas pequenas */
+  }
+}
+
+/* Responsividade para telas muito pequenas (até 400px) */
+@media (max-width: 400px) {
+  .forecast-day {
+    min-width: 80px; /* Ajusta o tamanho mínimo para caber melhor em telas pequenas */
+    font-size: 0.85em; /* Reduz o tamanho da fonte para telas muito pequenas */
+    padding: 6px; /* Menos padding para otimizar o espaço */
+  }
+}
+
+/* Responsividade para telas muito pequenas */
+@media (max-width: 400px) {
+  .weather-card {
+    padding: 15px;
+  }
+
+  .forecast-container {
+    gap: 5px;
+  }
+
+  .forecast-day {
+    font-size: 0.9em;
+    padding: 8px;
+  }
+}
+
+/* Modo Light */
+.light-background {
+  background: rgba(255, 255, 255, 0.8); /* Fundo branco com leve transparência */
+  backdrop-filter: blur(5px); /* Efeito de desfoque */
+}
+
+/* Modo Dark */
+.dark-background {
+  background: rgba(0, 0, 0, 0.7); /* Fundo preto transparente */
+  backdrop-filter: blur(5px); /* Efeito de desfoque para dar um visual elegante */
 }

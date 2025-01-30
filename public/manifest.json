@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Clima App",
+  "name": "Aplicativo de Previsão do Tempo",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +20,8 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#4E9F3D", 
+  "background_color": "#87CEEB", 
+  "description": "Acompanhe as condições climáticas em tempo real e as previsões do tempo",
+  "orientation": "portrait"
 }

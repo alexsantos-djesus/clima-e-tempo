@@ -1,70 +1,153 @@
-# Getting Started with Create React App
+# 🌦 Weather App - Previsão do Tempo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este é um **aplicativo de previsão do tempo** desenvolvido com **React** que utiliza a **API do OpenWeatherMap** para fornecer informações detalhadas sobre o clima atual e a previsão para os próximos dias. O app também oferece funcionalidade de **modo escuro** e **armazenamento local** para salvar a última cidade pesquisada.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Funcionalidades
 
-### `npm start`
+- **Exibição do clima atual:** Mostra a temperatura, umidade, vento e descrição do clima em tempo real.
+- **Previsão para os próximos dias:** Exibe a previsão do tempo para os próximos três dias.
+- **Modo Claro e Modo Escuro:** Permite alternar entre modos de tema claro e escuro, com a preferência sendo salva no armazenamento local.
+- **Armazenamento da última cidade:** A última cidade pesquisada é armazenada no **LocalStorage** para facilitar o uso repetido.
+- **Design Responsivo:** O layout adapta-se a diferentes tamanhos de tela, funcionando bem em dispositivos móveis e desktop.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🛠 Tecnologias Utilizadas
 
-### `npm test`
+Este projeto foi construído utilizando as seguintes tecnologias:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **React.js**: Biblioteca para construção de interfaces de usuário dinâmicas.
+- **Axios**: Biblioteca para fazer requisições HTTP.
+- **OpenWeatherMap API**: API para obter dados meteorológicos (clima atual e previsão do tempo).
+- **CSS (com animações e responsividade)**: Estilização do aplicativo.
+- **LocalStorage**: Para armazenar dados como a última cidade pesquisada e preferências de tema.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 📦 Como Rodar o Projeto
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Para rodar este projeto localmente, siga os passos abaixo.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 1️⃣ Clonar o repositório
+Primeiro, faça o clone do repositório para sua máquina local.
 
-### `npm run eject`
+```bash
+git clone https://github.com/alexsantos-djesus/clima-e-tempo
+cd weather-app
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 2️⃣ Instalar as dependências
+Com o repositório clonado, instale todas as dependências do projeto utilizando o npm:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm install
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 3️⃣ Configurar as chaves de API
+Para que o aplicativo funcione corretamente, você precisa obter as chaves da API do **OpenWeatherMap**. Crie uma conta em [OpenWeatherMap](https://openweathermap.org/api) e obtenha suas chaves de API para o clima.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. Crie um arquivo `.env.local` na raiz do projeto e adicione as variáveis de ambiente para as chaves da API:
 
-## Learn More
+```env
+REACT_APP_WEATHER_API_KEY=SUA_CHAVE_OPENWEATHER
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 4️⃣ Iniciar o projeto
+Agora, basta rodar o aplicativo em modo de desenvolvimento:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+npm start
+```
 
-### Code Splitting
+Abra o navegador e acesse **http://localhost:3000/** para ver o aplicativo em funcionamento.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## 🌍 Deploy
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+O projeto está hospedado no **Vercel** e pode ser acessado através do seguinte link:
 
-### Making a Progressive Web App
+[**Weather App - Vercel**](https://vercel.com/alex-santos-projects-2fab6ac4/weather-app)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Se desejar hospedar o projeto em sua própria conta de Vercel, basta seguir as instruções na [documentação oficial do Vercel](https://vercel.com/docs).
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 📚 Como Usar
 
-### Deployment
+1. **Pesquisar uma cidade**: Digite o nome de uma cidade no campo de texto e o aplicativo mostrará a previsão do tempo atual e para os próximos dias.
+2. **Alternar entre modos claro e escuro**: Clique no botão de alternância para mudar entre o modo claro e o modo escuro. Sua preferência será salva.
+3. **Consultar dados**: O aplicativo exibe informações como a temperatura atual, umidade, velocidade do vento e uma descrição geral do clima.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+## 🔧 Contribuindo para o Projeto
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Contribuições são bem-vindas! Siga os passos abaixo para contribuir para este projeto:
+
+1. **Fork o repositório**: Clique no botão "Fork" no canto superior direito do repositório.
+2. **Clone o seu fork**: Clone o repositório forkado para sua máquina local.
+
+```bash
+git clone https://github.com/alexsantos-djesus/clima-e-tempo
+```
+
+3. **Crie uma nova branch**: Crie uma branch para sua funcionalidade ou correção.
+
+```bash
+git checkout -b minha-nova-feature
+```
+
+4. **Faça alterações e commit**: Faça as modificações necessárias no código e commit suas mudanças.
+
+```bash
+git add .
+git commit -m "Descrição das alterações"
+```
+
+5. **Envie as mudanças para o seu fork**:
+
+```bash
+git push origin minha-nova-feature
+```
+
+6. **Abra um Pull Request**: Vá até o repositório original e abra um Pull Request explicando suas alterações.
+
+---
+
+## 📜 Licença
+
+Este projeto é **open-source** e está licenciado sob a **MIT License**.
+
+---
+
+## 🎨 Screenshots
+
+Aqui estão algumas capturas de tela para dar uma ideia do design:
+
+1. **Tela inicial com clima atual e pesquisa de cidade:**
+![Screenshot 1](https://via.placeholder.com/600x400.png)
+
+2. **Tela com previsão para os próximos dias:**
+![Screenshot 2](https://via.placeholder.com/600x400.png)
+
+---
+
+## 👨‍💻 Autor
+
+Este projeto foi desenvolvido por **Alex Santos**. Para mais informações, confira meu perfil no GitHub: [**Alex Santos GitHub**](https://github.com/alexsantos-djesus).
+
+---
+
+## 📬 Contato
+
+Se você tiver alguma dúvida ou sugestão, não hesite em me contatar por e-mail: **alexsantos.djesus@gmail.com**.
+
+---
+
+## 🛠 Agradecimentos
+
+- Agradeço à comunidade de desenvolvedores do GitHub, onde aprendi muito e continuei aprimorando meus conhecimentos em React!
+- Obrigado à equipe do OpenWeatherMap pela API maravilhosa de previsão do tempo.

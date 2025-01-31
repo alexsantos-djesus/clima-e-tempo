@@ -3,110 +3,55 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
   outline: none;
+  font-family: 'Roboto', sans-serif; /* Fonte mais moderna e elegante */
 }
 
-/* Suavizar transições no corpo e elementos principais */
+/* Corpo da página */
 body {
-  background: url("./public/clima\ tempo.JPG");
-  background-size: cover; /* Ajusta a imagem para preencher o fundo */
+  background: url("./img/clima\ tempo.JPG");
+  background-size: cover;
   background-position: center;
   min-height: 100vh;
-  font-family: Arial, sans-serif;
   text-align: center;
   background-color: #f4f4f4;
+  color: #333;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  padding: 20px 0; /* Espaçamento superior e inferior */
 }
 
+/* Container principal */
 .container {
-  max-width: 400px;
+  max-width: 450px;
   margin: 50px auto;
-  padding: 20px;
-  background: rgb(255, 255, 255);
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.5); /* Aumentando a transparência */
   border-radius: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+  margin-bottom: 40px;
+  backdrop-filter: blur(200px); /* Adicionando desfoque de 10px */
 }
 
+
+/* Espaço reservado para placeholders */
 .placeholder {
-  text-align: center;
   font-size: 1.2em;
-  color: gray;
-  margin-top: 20px;
+  color: #777;
+  margin-top: 30px;
 }
 
-/* Responsividade para telas pequenas */
-@media (max-width: 600px) {
-  .container {
-    padding: 15px;
-    margin: 20px;
-    max-width: 100%;
-  }
-
-  input {
-    width: 100%;
-  }
-
-  .tide-container,
-  .weather-card {
-    margin-top: 15px;
-  }
-
-  .forecast-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-
-  .forecast-day {
-    background: rgba(255, 255, 255, 0.2);
-    /* Fundo semitransparente */
-    padding: 10px;
-    border-radius: 5px;
-    text-align: center;
-    min-width: 90px;
-    flex: 1 1 100px;
-    color: white;
-    /* Melhor contraste no modo escuro */
-  }
-}
-
+/* Input de busca */
 input {
   width: 80%;
-  padding: 10px;
-  margin: 10px 0;
+  padding: 12px;
+  margin: 15px 0;
   border: 1px solid #ccc;
   border-radius: 5px;
+  font-size: 1.1em;
+  color: #333;
+  background: #fff;
   transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.tide-container {
-  margin-top: 20px;
-  padding: 15px;
-  background: #f0f8ff;
-  border-radius: 10px;
-  text-align: center;
-}
-
-.tide-container h3 {
-  font-size: 1.2em;
-  margin-bottom: 10px;
-}
-
-.tide-container ul {
-  list-style: none;
-  padding: 0;
-}
-
-.tide-container li {
-  padding: 8px;
-  border-bottom: 1px solid #ddd;
-}
-
-.tide-container li:last-child {
-  border-bottom: none;
 }
 
 input:focus {
@@ -115,67 +60,14 @@ input:focus {
   box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5);
 }
 
-/* Modo escuro */
-.dark {
-  background-color: #1e1e1e;
-  color: white;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.dark .forecast-container {
-  background-color: #4e4e4e;
-  color: #ffffff;
-  padding: 10px;
-  border-radius: 10px;
-  transition: background-color 0.5s ease, color 1.0s ease;
-}
-
-.dark .forecast-day {
-  background-color: #717171;
-  color: #ffffff;
-  padding: 8px;
-  margin: 5px 0;
-  border-radius: 5px;
-}
-
-.light-background .forecast-container {
-  background-color: #717171;
-  color: #ffffff;
-  padding: 10px;
-  border-radius: 10px;
-  transition: background-color 0.5s ease, color 1.0s ease;
-}
-
-.light-background .forecast-day {
-  background-color: #4e4e4e;
-  color: #ffffff;
-  padding: 8px;
-  margin: 5px 0;
-  border-radius: 5px;
-}
-
-.toggle-theme {
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  background: #333;
-  color: white;
-  margin-bottom: 10px;
-  transition: background 0.3s ease-in-out;
-}
-
-.toggle-theme:hover {
-  background: #ffffff;
-  color: #333;
-}
-
-/* Cartões de clima com animação de fade */
+/* Cartões de clima */
 .weather-card {
   padding: 20px;
   margin-top: 20px;
   border-radius: 10px;
   color: white;
+  text-align: center;
+  font-size: 1.2em;
   transition: all 0.5s ease-in-out;
   animation: fadeIn 0.5s ease-in-out;
 }
@@ -210,97 +102,105 @@ input:focus {
   background: #00c8ff;
 }
 
-/* Mensagens de erro */
-.error {
-  color: red;
-  font-weight: bold;
-  font-size: 1.1em;
-  margin-top: 20px;
+/* Previsões (Forecast) */
+.forecast-day {
+  background: rgba(255, 255, 255, 0.8); /* Fundo com leve transparência */
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  min-width: 120px; /* Garantir que o tamanho mínimo seja igual para todos */
+  flex: 1 1 120px; /* Mesmo comportamento de flex, garantindo o tamanho mínimo */
+  margin-bottom: 20px;
+  transition: background 0.3s ease-in-out;
+  cursor: pointer; /* Mudança para mãozinha */
 }
 
-/* Previsões */
+.forecast-day:hover {
+  background: rgba(255, 255, 255, 1); /* Quando passar o mouse, fica mais opaco */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Efeito de sombra no hover */
+  transform: translateY(-5px); /* Levanta um pouco o cartão */
+}
+
+/* Previsões - Responsividade */
 .forecast-container {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin-top: 20px;
+  gap: 20px; /* Mais espaçamento entre os itens */
+  margin-top: 40px; /* Maior espaçamento entre previsões e o resto */
   flex-wrap: wrap;
-  justify-content: space-evenly;
-  /* Para garantir o espaçamento uniforme */
   transition: all 0.3s ease;
 }
 
-.forecast-day {
-  background: #f0f0f0;
-  padding: 10px;
-  border-radius: 5px;
-  text-align: center;
-  min-width: 70px;
-  flex: 1 1 100px;
-  /* Para que cada previsão ocupe no mínimo 100px de largura */
-  margin-bottom: 10px;
-  /* Para dar espaçamento entre as linhas de previsões */
-  transition: background 0.3s ease-in-out;
-}
-
-/* Responsividade para telas menores que 600px (ex. celulares) */
+/* Responsividade para telas pequenas */
 @media (max-width: 600px) {
+  .container {
+    padding: 20px;
+    margin: 20px;
+    max-width: 100%;
+  }
+
+  input {
+    width: 100%;
+  }
+
   .forecast-container {
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    /* Centraliza as previsões */
+    gap: 15px;
+    margin-top: 40px; /* Mais espaçamento */
   }
 
   .forecast-day {
-    min-width: 90px;
-    /* Aumenta o tamanho mínimo das previsões */
-    padding: 8px;
-    /* Diminui o padding para ajustar melhor */
-    font-size: 0.9em;
-    /* Ajuste do tamanho da fonte para telas pequenas */
-    
-  }
-}
-
-/* Responsividade para telas muito pequenas (até 400px) */
-@media (max-width: 400px) {
-  .forecast-day {
-    min-width: 80px;
-    /* Ajusta o tamanho mínimo para caber melhor em telas pequenas */
-    font-size: 0.85em;
-    /* Reduz o tamanho da fonte para telas muito pequenas */
-    padding: 6px;
-    /* Menos padding para otimizar o espaço */
-  }
-}
-
-/* Responsividade para telas muito pequenas */
-@media (max-width: 400px) {
-  .weather-card {
+    background: rgba(255, 255, 255, 0.7);
     padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    min-width: 130px;
+    flex: 1 1 130px;
+    font-size: 1em;
+    color: #333;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
   }
 
-  .forecast-container {
-    gap: 5px;
-  }
-
-  .forecast-day {
-    font-size: 0.9em;
-    padding: 8px;
+  .forecast-day:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   }
 }
 
-/* Modo Light */
-.light-background {
-  background: rgba(255, 255, 255, 0.8);
-  /* Fundo branco com leve transparência */
-  backdrop-filter: blur(5px);
-  /* Efeito de desfoque */
+/* Modo escuro */
+.dark .forecast-day {
+  background-color: #717171;
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
 }
 
-/* Modo Dark */
-.dark-background {
-  background: rgba(0, 0, 0, 0.7);
-  /* Fundo preto transparente */
-  backdrop-filter: blur(5px);
-  /* Efeito de desfoque para dar um visual elegante */
+.dark .forecast-day:hover {
+  background-color: #999;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Botão de alternância de tema com transição suave */
+.toggle-theme {
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #333;
+  color: white;
+  margin-bottom: 20px; /* Espaçamento maior abaixo do botão */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.toggle-theme:hover {
+  background: #ffffff;
+  color: #333;
+}
+
+/* Efeitos de transição */
+.transition {
+  transition: all 0.3s ease-in-out;
 }

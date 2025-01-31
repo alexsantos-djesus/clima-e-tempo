@@ -4,7 +4,7 @@ import "./index.css";
 
 const App = () => {
   const [city, setCity] = useState(() => localStorage.getItem("lastCity") || "");
-  
+
   const [darkMode, setDarkMode] = useState(() => JSON.parse(localStorage.getItem("darkMode")) === true);
 
   useEffect(() => {

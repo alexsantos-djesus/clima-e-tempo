@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const API_KEY = "069b1cccd7eb4d7c9930af1b867cdb2f"; // Substitua pela sua chave da OpenWeather
+const API_KEY = "069b1cccd7eb4d7c9930af1b867cdb2f";
 
 const Weather = ({ city }) => {
   const [weather, setWeather] = useState(null);
@@ -45,7 +45,7 @@ const Weather = ({ city }) => {
     <div className="weather-container">
       {error && <p className="error">{error}</p>}
       {!weather && !forecast && <p className="placeholder">Digite uma cidade para ver a previsão!</p>}
-      
+
       {weather && (
         <div className={`weather-card ${weather.weather[0].main.toLowerCase()}`}>
           <h2>{weather.name}, {weather.sys.country}</h2>

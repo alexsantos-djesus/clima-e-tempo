@@ -11,7 +11,8 @@
 
 /* Estilos para a container */
 .container {
-  background-color: #f0f0f0; /* Cor de fundo clara */
+  background-color: #f0f0f0;
+  /* Cor de fundo clara */
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -25,7 +26,8 @@
 
 /* Modo escuro */
 .container.dark {
-  background-color: #282c34; /* Cor de fundo escura */
+  background-color: #282c34;
+  /* Cor de fundo escura */
   color: rgb(0, 0, 0);
 }
 
@@ -103,6 +105,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

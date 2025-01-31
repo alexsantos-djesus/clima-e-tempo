@@ -1,61 +1,65 @@
 import React, { useState, useEffect } from "react";
-import Weather from "./Weather";
-import "./index.css";
+import axios from "axios";
 
-const App = () => {
-  const [city, setCity] = useState(() => localStorage.getItem("lastCity") || "");
-  const [darkMode, setDarkMode] = useState(() => JSON.parse(localStorage.getItem("darkMode")) || false);
+const API_KEY = "069b1cccd7eb4d7c9930af1b867cdb2f";
+
+const Weather = ({ city }) => {
+  const [weather, setWeather] = useState(null);
+  const [error, setError] = useState(null);
   const [forecast, setForecast] = useState(null);
-  const [lastUpdated, setLastUpdated] = useState(() => localStorage.getItem("lastUpdated") || null);
 
   useEffect(() => {
-    localStorage.setItem("lastCity", city);
+    const fetchWeather = async () => {
+      if (!city) return;
+      try {
+        const response = await axios.get(
+          `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}&lang=pt_br`
+        );
+        setWeather(response.data);
+        setError(null);
+      } catch (err) {
+        setError("Cidade não encontrada!");
+      }
+    };
+    fetchWeather();
   }, [city]);
 
   useEffect(() => {
-    localStorage.setItem("darkMode", JSON.stringify(darkMode));
-  }, [darkMode]);
+    const fetchForecast = async () => {
+      if (!city) return;
+      try {
+        const response = await axios.get(
+          `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${API_KEY}&lang=pt_br`
+        );
 
-  useEffect(() => {
-    if (city) {
-      fetchForecast();
-    }
+        const threeDaysForecast = response.data.list.filter((item, index) => index % 8 === 0).slice(0, 3);
+        setForecast(threeDaysForecast);
+      } catch (err) {
+        setForecast(null);
+      }
+    };
+    fetchForecast();
   }, [city]);
-
-  const fetchForecast = async () => {
-    try {
-      const API_KEY = "S069b1cccd7eb4d7c9930af1b867cdb2f";
-      const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${API_KEY}&lang=pt_br`
-      );
-      const data = await response.json();
-      setForecast(data.list.slice(0, 5)); // Pega apenas os próximos 5 dias
-      
-      // Captura a hora atual da atualização
-      const updatedTime = new Date().toLocaleString("pt-BR", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
-      setLastUpdated(updatedTime);
-      localStorage.setItem("lastUpdated", updatedTime);
-    } catch (err) {
-      setForecast(null);
-    }
-  };
 
   return (
-    <div className={`container ${darkMode ? "dark" : ""}`}>
-      <button onClick={() => setDarkMode(!darkMode)} className="toggle-theme">
-        {darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
-      </button>
-      <h1>Previsão de Clima</h1>
-      <input
-        type="text"
-        placeholder="Digite a cidade..."
-        value={city}
-        onChange={(e) => setCity(e.target.value)}
-      />
-      <Weather city={city} />
+    <div className="weather-container">
+      {error && <p className="error">{error}</p>}
+      {!weather && !forecast && <p className="placeholder">Digite uma cidade para ver a previsão!</p>}
+
+      {weather && (
+        <div className={`weather-card ${weather.weather[0].main.toLowerCase()}`}>
+          <h2>{weather.name}, {weather.sys.country}</h2>
+          <img src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`} alt={weather.weather[0].description} />
+          <p>{weather.weather[0].description}</p>
+          <p>🌡 Temperatura: {weather.main.temp}°C</p>
+          <p>💧 Umidade: {weather.main.humidity}%</p>
+          <p>🌬️ Vento: {weather.wind.speed} m/s</p>
+        </div>
+      )}
+
       {forecast && (
         <div className="forecast-container">
-          <h3>Previsão para os próximos dias</h3>
+          <h3 style={{ textAlign: "center" }}>Previsão para os próximos dias</h3>
           {forecast.map((day, index) => (
             <div key={index} className="forecast-day">
               <p>{new Date(day.dt * 1000).toLocaleDateString()}</p>
@@ -63,11 +67,10 @@ const App = () => {
               <p>{day.weather[0].description}</p>
             </div>
           ))}
-          {lastUpdated && <p className="update-time">Última atualização: {lastUpdated}</p>}
         </div>
       )}
     </div>
   );
 };
 
-export default App;
+export default Weather;

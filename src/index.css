@@ -3,12 +3,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
   outline: none;
 }
 
 /* Suavizar transições no corpo e elementos principais */
 body {
-  background: url("./img/clima\ tempo.JPG");
+  background: url("./public/clima\ tempo.JPG");
   background-size: cover; /* Ajusta a imagem para preencher o fundo */
   background-position: center;
   min-height: 100vh;

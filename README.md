@@ -69,7 +69,7 @@ Abra o navegador e acesse **http://localhost:3000/** para ver o aplicativo em fu
 
 O projeto está hospedado no **Vercel** e pode ser acessado através do seguinte link:
 
-[**Weather App - Vercel**](https://vercel.com/alex-santos-projects-2fab6ac4/weather-app)
+[**Weather App - Vercel**](https://clima-e-tempo-nine.vercel.app/)
 
 Se desejar hospedar o projeto em sua própria conta de Vercel, basta seguir as instruções na [documentação oficial do Vercel](https://vercel.com/docs).
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Weather from "./Weather";
 import "./index.css";
 
@@ -7,8 +7,8 @@ const App = () => {
   const [darkMode, setDarkMode] = useState(() => JSON.parse(localStorage.getItem("darkMode")) === true);
   const [lastUpdate, setLastUpdate] = useState(null);
 
-  // Função para buscar a previsão do tempo
-  const fetchWeatherData = () => {
+  // Função para buscar a previsão do tempo (memorizar com useCallback)
+  const fetchWeatherData = useCallback(() => {
     const weatherData = {
       city: city || "São Paulo",
       temperature: "25°C",
@@ -20,30 +20,28 @@ const App = () => {
       ]
     };
 
-    // Atualiza o horário da última atualização
     setLastUpdate(new Date().toLocaleString());
     return weatherData;
-  };
+  }, [city]);  // city como dependência
 
   // Estado para armazenar os dados do clima
   const [weatherData, setWeatherData] = useState(fetchWeatherData);
 
-  // Atualiza os dados automaticamente a cada 10 minutos (600000 ms)
+  // Atualiza os dados automaticamente a cada 10 minutos
   useEffect(() => {
     const intervalId = setInterval(() => {
       setWeatherData(fetchWeatherData());
-    }, 600000);  // Atualização a cada 10 minutos
+    }, 600000);
 
-    // Limpar o intervalo ao desmontar o componente
     return () => clearInterval(intervalId);
-  }, [city]);
+  }, [fetchWeatherData]);  // Agora está usando fetchWeatherData como dependência
 
-  // Efeito para atualizar a cidade no localStorage
+  // Atualizar cidade no localStorage
   useEffect(() => {
     localStorage.setItem("lastCity", city);
   }, [city]);
 
-  // Efeito para atualizar o modo escuro no localStorage
+  // Atualizar modo escuro no localStorage
   useEffect(() => {
     localStorage.setItem("darkMode", JSON.stringify(darkMode));
   }, [darkMode]);
@@ -61,10 +59,8 @@ const App = () => {
         onChange={(e) => setCity(e.target.value)}
       />
 
-      {/* Mostrar Weather quando cidade estiver preenchida */}
       {city && <Weather city={city} weatherData={weatherData} />}
 
-      {/* Hora da última atualização */}
       {lastUpdate && (
         <div className="last-update">
           <p>Última atualização: {lastUpdate}</p>

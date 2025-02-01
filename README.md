@@ -35,7 +35,7 @@ Primeiro, faça o clone do repositório para sua máquina local.
 
 ```bash
 git clone https://github.com/alexsantos-djesus/clima-e-tempo
-cd weather-app
+cd clima-e-tempo
 ```
 
 ### 2️⃣ Instalar as dependências
@@ -128,10 +128,10 @@ Este projeto é **open-source** e está licenciado sob a **MIT License**.
 Aqui estão algumas capturas de tela para dar uma ideia do design:
 
 1. **Tela inicial com clima atual e pesquisa de cidade:**
-![Screenshot 1](https://via.placeholder.com/600x400.png)
+![alt text](image.png)
 
 2. **Tela com previsão para os próximos dias:**
-![Screenshot 2](https://via.placeholder.com/600x400.png)
+![alt text](image-1.png)
 
 ---
 
